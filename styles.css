@@ -1,0 +1,73 @@
+/* Estilos para la fuente personalizada */
+@font-face {
+    font-family: MiFuente;
+    /* Nombre que le das a tu fuente */
+    src: url('Fonts/Barlow-Black.ttf') format('opentype');
+    /* Ruta a tu archivo de fuente .otf */
+}
+
+/* Estilos para la fuente personalizada */
+@font-face {
+    font-family: Products;
+    /* Nombre que le das a tu fuente */
+    src: url('Fonts/Barlow-ExtraLight.ttf') format('opentype');
+    /* Ruta a tu archivo de fuente .otf */
+}
+
+/* Estilos para el cuerpo del documento */
+body {
+    font-family: MiFuente, Arial, sans-serif;
+    /* Utiliza tu fuente personalizada como primera opción */
+    background-color: #F3F5FB;
+    /* Color de fondo del cuerpo del documento */
+    width: 100%;
+    /* Ancho completo del cuerpo */
+    height: 100%;
+    /* Altura completa del cuerpo */
+}
+
+.card {
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+    margin: 10px;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+    height: 22rem;
+}
+
+.card-img-top {
+    height: 100px;
+    /* Altura automática de la imagen */
+    width: auto;
+    /* Ancho automático de la imagen */
+}
+
+.container {
+    display: flex;
+    padding-top: 1rem;
+    flex-direction: column;
+}
+
+.navbar {
+    margin-bottom: 1rem;
+}
+
+table {
+    padding: 0px;
+    /* Espaciado interno de las celdas de la tabla */
+    text-align: center;
+    /* Centrar el texto en las celdas de la tabla */
+    background-color: #2B3035;
+    /* Color de fondo de las celdas de la tabla */
+    width: 100%;
+    /* Ancho completo de la tabla */
+    height: auto;
+    /* Altura de la tabla */
+    border-radius: 10px;
+    /* Bordes redondeados de 10px */
+    margin-top: 1rem;
+    color: white;
+}
+

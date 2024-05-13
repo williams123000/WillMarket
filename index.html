@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <img class="mr-4" src="Multimedia/Imagenes/Logo.png" alt="" width="120" height="40">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Principal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="farmacia.html">Farmacia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="tecnologia.html">Tecnología</a>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="nav-link active btn btn-link" data-bs-toggle="modal"
+                            data-bs-target="#loginModal">Iniciar sesión</button>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="nav-link active btn btn-link" data-bs-toggle="modal"
+                            data-bs-target="#searchModal">Buscar</button>
+                    </li>
+                    <li>
+                        <a class="nav-link active" href="#" id="carritoBtn" data-bs-toggle="modal"
+                            data-bs-target="#carritoModal">
+                            <i class="fas fa-shopping-cart"></i> Carrito
+                        </a>
+                    </li>
+
+                </ul>
+                
+            </div>
+        </div>
+    </nav>
+
+    <!-- Modal de búsqueda -->
+    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="searchModalLabel">Buscar productos por rango de precios</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Formulario de búsqueda -->
+                    <form action="src/buscar_productos.php" method="get">
+                        <div class="mb-3">
+                            <label for="precio_min" class="form-label">Precio mínimo:</label>
+                            <input type="number" class="form-control" id="precio_min" name="precio_min" step="0.01">
+                        </div>
+                        <div class="mb-3">
+                            <label for="precio_max" class="form-label">Precio máximo:</label>
+                            <input type="number" class="form-control" id="precio_max" name="precio_max" step="0.01">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Buscar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Modal de inicio de sesión -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Iniciar sesión</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Formulario de inicio de sesión -->
+                    <form action="src/validar_login.php" method="post">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Usuario:</label>
+                            <input type="text" class="form-control" id="username" name="username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña:</label>
+                            <input type="password" class="form-control" id="password" name="password">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Función para obtener parámetros de la URL (en este caso, el parámetro de error) 
+        function getParameterByName(name, url) {
+            // Si no se proporciona la URL, se toma la URL actual 
+            if (!url) url = window.location.href;
+            // Escapar caracteres especiales en la expresión regular 
+            name = name.replace(/[\[\]]/g, '\\$&');
+            // Crear una expresión regular para buscar el parámetro y extraer el valor
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            // Si no se encuentra el parámetro, devolver nulo
+            if (!results) return null;
+            // Si no se encuentra el valor, devolver una cadena vacía
+            if (!results[2]) return '';
+            // Decodificar el valor del parámetro y devolverlo
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        // Función para mostrar un alerta si hay un parámetro de error en la URL 
+        window.onload = function () {
+            var error = getParameterByName('error');
+            if (error === 'credenciales_invalidas') {
+                alert('Credenciales inválidas. Por favor, inténtalo de nuevo.');
+            }
+        };
+    </script>
+
+    <!-- Modal de carrito -->
+    <div class="modal fade" id="carritoModal" tabindex="-1" aria-labelledby="carritoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="carritoModalLabel">Carrito de Compras</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="carritoBody">
+                    <!-- Aquí se mostrarán los productos agregados al carrito -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Pagar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función para mostrar el carrito al abrir el modal de carrito 
+        document.addEventListener('DOMContentLoaded', function () {
+            // Escuchar el evento shown.bs.modal del modal de carrito
+            var myModalEl = document.getElementById('carritoModal');
+            myModalEl.addEventListener('shown.bs.modal', function () {
+                // Llamar a la función mostrarCarrito() cuando se muestre el modal de carrito
+                mostrarCarrito();
+            });
+        });
+    </script>
+
+
+
+
+
+
+    <h3 class="ms-4">Lo mejor del súper</h3>
+    <div class="container" id="superContainer">
+        <div class="row">
+            <!-- Aquí se cargarán las tarjetas dinámicamente -->
+        </div>
+    </div>
+
+    <h3 class="ms-4">Productos destacados del hogar</h3>
+    <div class="container" id="hogarContainer">
+        <div class="row">
+            <!-- Aquí se cargarán las tarjetas dinámicamente -->
+        </div>
+    </div>
+
+    <h3 class="ms-4">Productos especiales</h3>
+    <div class="container" id="especialContainer">
+        <div class="row">
+            <!-- Aquí se cargarán las tarjetas dinámicamente -->
+        </div>
+    </div>
+
+    <table>
+        <tr>
+            <td>
+                <h5 class="pt-2">Síguenos en nuestras redes sociales</h5>
+                <a href="https://www.instagram.com/williamschan/" target="_blank">
+                    <img src="Multimedia/Imagenes/IG.png" alt="instagram" width="30" height="30">
+                </a>
+            </td>
+        </tr>
+    </table>
+
+    <footer class="bg-body-tertiary"
+        style="width: 100%; height: 2.5rem; text-align: center; color: white; margin-top: 3rem;" data-bs-theme="dark">
+        <p>&copy; 2024 WillMarket. Todos los derechos reservados.</p>
+    </footer>
+
+
+    <!-- Sección de scripts -->
+    <!-- Script para cargar las tarjetas de productos -->
+    <script src="src/Cards.js"></script>
+
+    <!-- Script de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <!-- Script para mostrar el carrito --> 
+    <script>
+        // Función para mostrar el carrito al abrir el modal de carrito
+        function mostrarCarrito() {
+            console.log('Mostrando carrito');
+            // Obtener el carrito del localStorage
+            var carrito = JSON.parse(localStorage.getItem("Carrito")) || [];
+            // Obtener el elemento del carrito
+            var carritoBody = document.getElementById('carritoBody');
+
+            console.log('Mostrando carrito:', carrito);
+            console.log('Elemento del carrito:', carritoBody);
+            // Mostrar el carrito en el modal
+            if (carrito.length === 0) {
+                // Mostrar mensaje de carrito vacío
+                carritoBody.innerHTML = '<p>El carrito está vacío</p>';
+            } else {
+                carritoBody.innerHTML = ''; // Limpiar el contenido existente del carrito
+                // Mostrar los productos en el carrito
+                carrito.forEach(producto => {
+                    // Crear un elemento de párrafo para el producto
+                    var productoElemento = document.createElement('p');
+                    // Asignar el contenido del producto al elemento de párrafo 
+                    productoElemento.textContent = `${producto.nombre} - $${producto.precio}`;
+                    carritoBody.appendChild(productoElemento); // Agregar el producto al carrito
+                });
+            }
+        }
+    </script>
+
+
+
+</body>
+
+</html>

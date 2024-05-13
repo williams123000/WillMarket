@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <img class="mr-4" src="Multimedia/Imagenes/Logo.png" alt="" width="120" height="40">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index_admin.html">Principal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Cerrar sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <h3 class="ms-4">Lo mejor del súper</h3>
+    <div class="container" id="superContainer">
+        <div class="row">
+            <!-- Aquí se cargarán las tarjetas dinámicamente -->
+        </div>
+    </div>
+
+    <h3 class="ms-4">Productos destacados del hogar</h3>
+    <div class="container" id="hogarContainer">
+        <div class="row">
+            <!-- Aquí se cargarán las tarjetas dinámicamente -->
+        </div>
+    </div>
+
+    <h3 class="ms-4">Productos especiales</h3>
+    <div class="container" id="especialContainer">
+        <div class="row">
+            <!-- Aquí se cargarán las tarjetas dinámicamente -->
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <!-- Formulario para agregar un nuevo producto -->
+        <h3 class="mb-3">Agregar nuevo producto</h3>
+        <form action="src/agregar_producto.php" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre del producto:</label>
+                <input type="text" class="form-control" id="nombre" name="nombre">
+            </div>
+            <div class="mb-3">
+                <label for="descripcion" class="form-label">Descripción:</label>
+                <textarea class="form-control" id="descripcion" name="descripcion"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="precio" class="form-label">Precio:</label>
+                <input type="number" class="form-control" id="precio" name="precio" step="0.01">
+            </div>
+            <div class="mb-3">
+                <label for="categoria" class="form-label">Categoría:</label>
+                <input type="text" class="form-control" id="categoria" name="categoria">
+            </div>
+            <div class="mb-3">
+                <label for="imagen" class="form-label">Imagen:</label>
+                <input type="file" class="form-control" id="imagen" name="imagen">
+            </div>
+            <button type="submit" class="btn btn-primary">Agregar</button>
+        </form>
+
+        <!-- Formulario para eliminar un producto -->
+        <h3 class="mt-5 mb-3">Eliminar producto</h3>
+        <form action="src/eliminar_producto.php" method="post">
+            <div class="mb-3">
+                <label for="id_eliminar" class="form-label">ID del producto a eliminar:</label>
+                <input type="number" class="form-control" id="id_eliminar" name="id_eliminar">
+            </div>
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+        </form>
+
+
+        <!-- Formulario para modificar un producto -->
+        <h3 class="mt-5 ms-4">Modificar producto</h3>
+        <form action="src/actualizar_producto.php" method="post">
+            <div class="mb-3">
+                <label for="id_modificar" class="form-label">ID del producto a modificar:</label>
+                <input type="number" class="form-control" id="Id" name="Id">
+            </div>
+            <div class="mb-3">
+                <label for="nombre_modificar" class="form-label">Nombre del producto:</label>
+                <input type="text" class="form-control" id="Nombre" name="Nombre">
+            </div>
+            <div class="mb-3">
+                <label for="descripcion_modificar" class="form-label">Descripción:</label>
+                <textarea class="form-control" id="Descripcion" name="Descripcion"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="precio_modificar" class="form-label
+                    ">Precio:</label>
+                <input type="number" class="form-control" id="Precio" name="Precio" step="0.01">
+            </div>
+            <button type="submit" class="btn btn-primary">Actualizar</button>
+        </form>
+    </div>
+
+
+
+    <table>
+        <tr>
+            <td>
+                <h5 class="pt-2">Síguenos en nuestras redes sociales</h5>
+                <a href="https://www.instagram.com/williamschan/" target="_blank">
+                    <img src="Multimedia/Imagenes/IG.png" alt="instagram" width="30" height="30">
+                </a>
+            </td>
+        </tr>
+    </table>
+
+    <footer class="bg-body-tertiary"
+        style="width: 100%; height: 2.5rem; text-align: center; color: white; margin-top: 3rem;" data-bs-theme="dark">
+        <p>&copy; 2024 WillMarket. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Sección de scripts -->
+    <!-- Script para cargar las tarjetas de productos incluyendo la funcionalidad de administrador -->
+    <script src="src/Cards_Admin.js"></script>
+
+    <!-- Script de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
