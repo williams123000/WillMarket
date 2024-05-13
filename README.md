@@ -3,7 +3,7 @@ Antes de comenzar, asegúrate de tener instalado XAMPP en tu dispositivo. XAMPP 
 
 
 # Configuración de XAMPP
-1.- Una vez que hayas descargado e instalado XAMPP, abre el panel de control de XAMPP.
+1. Una vez que hayas descargado e instalado XAMPP, abre el panel de control de XAMPP.
 2.- Inicia los servicios de Apache y MySQL haciendo clic en los botones "Start" junto a cada uno de ellos.
 3.- Asegúrate de que los servicios estén ejecutándose correctamente; los indicadores deben mostrar "Running".
 
