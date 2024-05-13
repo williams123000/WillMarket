@@ -11,3 +11,7 @@ Antes de comenzar, asegúrate de tener instalado XAMPP en tu dispositivo. XAMPP 
 Descarga el archivo ZIP de la página web del Supermercado "WillMarket".
 Extrae el contenido del archivo ZIP en la carpeta htdocs dentro del directorio de instalación de XAMPP. Por lo general, esta carpeta se encuentra en C:\xampp\htdocs.
 Ahora, abre tu navegador web y en la barra de direcciones, escribe localhost/nombre_de_la_carpeta, donde nombre_de_la_carpeta es el nombre de la carpeta donde extrajiste los archivos de la página web. Por ejemplo, si la carpeta se llama superfresh, escribirías localhost/superfresh.
+
+<p align="center">
+  <img src="https://github.com/williams123000/WillMarket/blob/main/Multimedia/Imagenes/Logo2.png">
+</p>
